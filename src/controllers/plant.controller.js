@@ -1,18 +1,18 @@
 'use strict';
-
+require('body-parser');
 // import the Plant model from the models folder
 const Plant = require('../models/plant.model');
 
 
 exports.findAll = function(req, res) {
     Plant.findAll(function(err, plant) {
-        console.log('controller');
+        // console.log('controller');
 
         if (err)
 
         res.send(err);
 
-        console.log('res', plant);
+        // console.log('res', plant);
         res.send(plant);
         
     });
@@ -20,6 +20,8 @@ exports.findAll = function(req, res) {
 
 exports.create = function(req, res) {
     const newPlant = new Plant(req.body);
+
+    // console.log(JSON.stringify(newPlant));
 
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
         res.status(400).send({ error: true, message: "Please provide all required fields" });
