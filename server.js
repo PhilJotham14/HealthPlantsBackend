@@ -8,6 +8,9 @@ const app = express();
 
 // import routes
 const plantRoute = require('./src/routes/plant.route');
+const userRoute = require('./src/routes/user.route');
+const conditionRoute = require('./src/routes/condition.route');
+const remedyRoute = require('./src/routes/remedy.route');
 
 
 
@@ -24,6 +27,10 @@ app.use(cors());
 
 // Use routes as middleware with the help of express.
 app.use('/api/plants', plantRoute);
+app.use('/api/users', userRoute);
+app.use('/api/conditions', conditionRoute);
+app.use('/api/remedies', remedyRoute);
+
 
 // define a root route
 app.get('/', (req, res) => {

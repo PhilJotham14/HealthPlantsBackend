@@ -10,26 +10,6 @@ var Plant = function(plant){
     this.plant_description = plant.plant_description;
     this.plant_image = plant.plant_image;
 };
-// var newPlant = function(req, res){
-//     const plant_common_name = req.body.plant_common_name;
-//     const plant_latin_name = req.body.plant_latin_name;
-//     const plant_description = req.body.plant_description;
-
-    // dbConnect.query("INSERT INTO PLANT (plant_common_name, plant_latin_name, plant_description) VALUES[?,?,?]",
-    // [plant_common_name, plant_latin_name, plant_description],
-    // (err, result) => {
-    //     if (err) {
-    //         console.log(err);
-    //     }else{
-    //         res.send("Values added");
-    //     };
-    //     // console.log(plant_common_name + plant_latin_name + plant_description);
-
-    //     return result;
-    // });
-//     console.log(plant_latin_name);
-//     console.log(newPlant);
-// };
 
 Plant.create = function (newPlant, result){
     
@@ -47,7 +27,7 @@ Plant.create = function (newPlant, result){
 };
 
 Plant.findAll = function (result) {
-    dbConnect.query("SELECT * FROM PLANT", function (err, res) {
+    dbConnect.query("SELECT plant_id, plant_common_name, plant_latin_name FROM PLANT", function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -59,4 +39,3 @@ Plant.findAll = function (result) {
 };
 
 module.exports = Plant;
-// module.exports = newPlant;
