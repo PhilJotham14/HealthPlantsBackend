@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 // Configurations for the database connection
 const dbConnect = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DB
+    host: 'localhost',
+    user: 'walter',
+    password: 'password',
+    database: 'health_plants_of_uganda'
 });
 
 dbConnect.connect(function(err) {
