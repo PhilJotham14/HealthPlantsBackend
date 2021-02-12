@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-//import the plantController fromthe controllers folder.
+//import the conditionController fromthe controllers folder.
 const conditionController = require('../controllers/condition.controller');
 const newCondition = require('../models/condition.model');
 
