@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 // Configurations for the database connection
 const dbConnect = mysql.createConnection({
-    host: 'localhost',
-    user: 'walter',
-    password: 'password',
-    database: 'health_plants_of_uganda'
+    host: 'us-cdbr-east-03.cleardb.com',
+    user: 'b635cdd78cf9c8',
+    password: '12faab67',
+    database: 'heroku_d05d884ef7b862e'
 });
 
 dbConnect.connect(function(err) {

@@ -4,6 +4,7 @@ const router = express.Router();
 
 //import the plantController fromthe controllers folder.
 const plantController = require('../controllers/plant.controller');
+const newPlant = require('../models/plant.model');
 
 // Route to retrieve all plants.
 router.get('/', plantController.findAll);

@@ -8,11 +8,13 @@ var Plant = function(plant){
     this.plant_common_name = plant.plant_common_name;
     this.plant_latin_name = plant.plant_latin_name;
     this.plant_description = plant.plant_description;
-    // this.plant_image = plant.plant_image;
+    this.plant_image = plant.plant_image;
 };
 
 Plant.create = function (newPlant, result){
+    
     dbConnect.query("INSERT INTO PLANT set ?", newPlant, function(err, res){
+        // console.log(newPlant);
         if (err) {
             console.log("error: ", err);
 
@@ -25,7 +27,7 @@ Plant.create = function (newPlant, result){
 };
 
 Plant.findAll = function (result) {
-    dbConnect.query("SELECT * FROM PLANT", function (err, res) {
+    dbConnect.query("SELECT plant_id, plant_common_name, plant_latin_name FROM PLANT", function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
