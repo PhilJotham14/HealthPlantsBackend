@@ -12,7 +12,7 @@ exports.findAll = function(req, res) {
 
         res.send(err);
 
-        // console.log('res', user);
+        // console.log('res', remedy);
         res.send(remedy);
         
     });

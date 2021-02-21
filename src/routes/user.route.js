@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-//import the plantController fromthe controllers folder.
+//import the userController fromthe controllers folder.
 const userController = require('../controllers/user.controller');
 const newUser = require('../models/user.model');
 
