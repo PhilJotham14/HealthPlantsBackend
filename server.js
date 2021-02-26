@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
+const path = require("path");
 // create the express app
 const app = express();
 
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 app.use(cors());
+// app.use(express.static(path.join(_dirname, 'public')));
+app.use(fileUpload());
 
 // Use routes as middleware with the help of express.
 app.use('/api/plants', plantRoute);
