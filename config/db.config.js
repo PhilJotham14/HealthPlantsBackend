@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 // Configurations for the database connection
 const dbConnect = mysql.createPool({
-    host: 'us-cdbr-east-03.cleardb.com',
-    user: 'b635cdd78cf9c8',
-    password: '12faab67',
-    database: 'heroku_d05d884ef7b862e'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DB
 });
 
 // dbConnect.connect(function(err) {
