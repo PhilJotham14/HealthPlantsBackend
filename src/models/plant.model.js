@@ -9,9 +9,17 @@ var Plant = function(plant){
     this.plant_latin_name = plant.plant_latin_name;
     this.plant_description = plant.plant_description;
     this.plant_image = plant.plant_image;
+    // let file = req.fles.uploaded_image;
+    // this.plant_image = file.name;
 };
-
-Plant.create = function (newPlant, result){
+// var file = req.files.uploaded_image;
+// 		var img_name=file.name;
+Plant.create = function (newPlant, result){                   
+    // file.mv('public/images/upload_images/'+file.name, function(err) {
+                   
+    //     if (err)
+ 
+    //     return res.status(500).send(err);
     
     dbConnect.query("INSERT INTO PLANT set ?", newPlant, function(err, res){
         // console.log(newPlant);
@@ -24,11 +32,12 @@ Plant.create = function (newPlant, result){
             result(null, res.insertId);
         }
     });
+
 };
 
 Plant.findAll = function (result) {
-    dbConnect.query("SELECT plant_id, plant_common_name, plant_latin_name FROM PLANT", function (err, res) {
-        if (err) {
+    dbConnect.query("SELECT * FROM PLANT", function (err, res) {
+        if (err) { //SELECT plant_id, plant_common_name, plant_latin_name FROM PLANT
             console.log("error: ", err);
             result(null, err);
         } else {
