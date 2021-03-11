@@ -4,7 +4,6 @@ const router = express.Router();
 
 //import the conditionController fromthe controllers folder.
 const conditionController = require('../controllers/condition.controller');
-const newCondition = require('../models/condition.model');
 
 // Route to retrieve all conditions.
 router.get('/', conditionController.findAll);
