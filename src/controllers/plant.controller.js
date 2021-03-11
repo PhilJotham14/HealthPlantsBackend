@@ -20,32 +20,50 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.create = function(req, res) {
+exports.create = async function(req, res) {
+    console.log(req.body.plant_common_name);
     // async
-    // const ImgResponse = await cloudinary.uploader.upload(
-    //     req.file.path
-
-    // )
-    // console.log(ImgResponse);
-    // let Img_id = ImgResponse.public_id;
-    // let Img = ImgResponse.url;
+    const ImgResponse = await cloudinary.uploader.upload(
+        req.file.path
+        
+    ).catch(error => {
+        console.log(error);
+    });
+    console.log(ImgResponse.url);
     
-    const newPlant = new Plant(req.body);
+    const newPlant = new Plant({
+            plant_common_name: req.body.plant_common_name,
+            plant_latin_name: req.body.plant_latin_name,
+            plant_description: req.body.plant_description,
+            plant_image: ImgResponse.url });
+
 
     // console.log(JSON.stringify(newPlant));
-
-    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
-        res.status(400).send({ error: true, message: "Please provide all required fields" });
-    } else {
+    if(ImgResponse === Object && Object.keys(ImgResponse).length === 0){
+        res.status(400).send({error: true, message: "Please provide all data"});
+    } else{
         Plant.create(newPlant, function(err, plant) {
-            if (err)
-            res.send(err);
-            res.json({
-                error: false,
-                message: "Plant added successfully.",
-                data: plant});
-        });
+                    if (err)
+                    res.send(err);
+                    res.json({
+                        error: false,
+                        message: "Plant added successfully.",
+                        data: plant});
+                });
     }
+
+    // if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+    //     res.status(400).send({ error: true, message: "Please provide all required fields" });
+    // } else {
+    //     Plant.create(newPlant, function(err, plant) {
+    //         if (err)
+    //         res.send(err);
+    //         res.json({
+    //             error: false,
+    //             message: "Plant added successfully.",
+    //             data: plant});
+    //     });
+    // }
  };
 
  exports.findById = function(req, res) {
@@ -62,7 +80,7 @@ exports.update = function(req, res) {
         });
     }else{
         Plant.update(req.params.id, new Plant(req.body),
-        function(err, employee) {
+        function(err, plant) {
             if (err)   res.send(err);
             res.json({ error:false,
                 message: 'Plant successfully updated'

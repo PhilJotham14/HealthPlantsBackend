@@ -11,7 +11,7 @@ const newPlant = require('../models/plant.model');
 router.get('/', plantController.findAll);
 
 // Route to create a new plant entry.
-router.post('/', plantController.create);
+router.post('/', multer.single('myImage'), plantController.create);
 // multer.single('myImage'),
 
 // Retrieve a single employee with id

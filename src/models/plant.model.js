@@ -8,9 +8,7 @@ var Plant = function(plant){
     this.plant_common_name = plant.plant_common_name;
     this.plant_latin_name = plant.plant_latin_name;
     this.plant_description = plant.plant_description;
-    // this.plant_image = plant.plant_image;
-    // this.plant_image = plant.plant_image;
-    // this.plant_image_id = plant.plant_image_id; 
+    this.plant_image = plant.plant_image;
     
 };
 
