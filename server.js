@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const {cloudinary} = require('./config/cloudinary');
 const fileUpload = require("express-fileupload");
-const path = require("path");
+// const path = require("path");
 // create the express app
 const app = express();
 
@@ -19,17 +20,17 @@ const commentRoute = require('./src/routes/comment.route');
 
 
 // Declare the server port
-const port = process.env.PORT || 5001;
+const port = 5001 || process.env.PORT ;
 
 // parse url encoded requests
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // parse requests of content type application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors());
 // app.use(express.static(path.join(_dirname, 'public')));
-app.use(fileUpload());
+// app.use(fileUpload());
 
 // Use routes as middleware with the help of express.
 app.use('/api/plants', plantRoute);
@@ -44,6 +45,7 @@ app.use('/api/comments', commentRoute);
 app.get('/', (req, res) => {
     res.send("Welcome to Health plants of Uganda.");
 });
+// })
 
 
 // listen for requests
