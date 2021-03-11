@@ -45,25 +45,41 @@ exports.create = async function(req, res) {
             if (err)
             // console.log('here:',err)
             res.send(err);
-            res.status(200).json({ message: "Plant added successfully.", data: plant});
+            res.json({
+                error: false,
+                message: "Plant added successfully.",
+                data: plant});
         });
     }
+ };
 
-
-//     // New code.....
-    
-    
-
+ exports.findById = function(req, res) {
+    Plant.findById(req.params.id, function(err, plant) {
+        if (err)  res.send(err);
+        res.json(employee);
+    });
+};
+exports.update = function(req, res) {
+    if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+        res.status(400).send({
+            error:true,
+            message: 'Please provide all required field'
+        });
+    }else{
+        Plant.update(req.params.id, new Plant(req.body),
+        function(err, employee) {
+            if (err)   res.send(err);
+            res.json({ error:false,
+                message: 'Plant successfully updated'
+            });
+        });
+    }
+};
+exports.delete = function(req, res) {
+    Plant.delete( req.params.id, function(err, employee) {
+        if (err)  res.send(err);
+        res.json({ error:false,
+            message: 'Plant successfully deleted' });
+        });
 };
 
-
-// exports.create = async function(req, res) {
-//     // async
-//     const ImgResponse = await cloudinary.uploader.upload(
-//         req.file.path
-        
-//     ).catch(error => {
-//         console.log(error);
-//     });
-//     console.log(ImgResponse);
-// };

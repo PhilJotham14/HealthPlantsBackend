@@ -1,0 +1,17 @@
+
+
+exports.saveImage = (file, cb) => {
+    cloudinary.upload(file, cb())
+}
+
+ 
+
+ 
+
+const {  saveImage  } = require('')
+
+exports.createUser = (req, res)=>{
+    saveImage(req.file.path, 
+    
+)
+}

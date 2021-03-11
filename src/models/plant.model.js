@@ -21,6 +21,10 @@ Plant.create = function (newPlant, result){
  
     //     return res.status(500).send(err);
     
+};
+
+Plant.create = function (newPlant, result){
+
     dbConnect.query("INSERT INTO PLANT set ?", newPlant, function(err, res){
         // console.log(newPlant);
         if (err) {
@@ -35,6 +39,19 @@ Plant.create = function (newPlant, result){
 
 };
 
+Plant.findById = function (id, result) {
+    dbConnect.query("SELECT * FROM PLANT WHERE plant_id = ?", plant_id, function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else{
+            result(err, null);
+        }
+        
+    });
+    
+};
+
 Plant.findAll = function (result) {
     dbConnect.query("SELECT * FROM PLANT", function (err, res) {
         if (err) { //SELECT plant_id, plant_common_name, plant_latin_name FROM PLANT
@@ -46,5 +63,33 @@ Plant.findAll = function (result) {
         }
     });
 };
+
+
+Plant.update = function(plant_id, plant, result){
+    dbConnect.query("UPDATE plant SET plant_common_name=?,plant_latin_name=?,plant_description=?,plant_image=? WHERE id = ?",
+    [pant.plant_common_name,plant.plant_latin_name,plant.plant_description,plant.plant_image],
+    function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }else{
+            result(null, res);
+        }
+    });
+};
+
+
+Plant.delete = function(plant_id, result){
+    dbConnect.query("DELETE FROM plant WHERE plant_id = ?", [plant_id],
+    function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }else{
+            result(null, res);
+        }
+    });
+};
+
 
 module.exports = Plant;

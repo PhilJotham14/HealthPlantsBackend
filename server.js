@@ -22,10 +22,10 @@ const reviewRoute = require('./src/routes/review.route');
 const port = 5001 || process.env.PORT ;
 
 // parse url encoded requests
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // parse requests of content type application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors());
 // app.use(express.static(path.join(_dirname, 'public')));
@@ -43,6 +43,7 @@ app.use('/api/reviews', reviewRoute);
 app.get('/', (req, res) => {
     res.send("Welcome to Health plants of Uganda.");
 });
+// })
 
 
 // listen for requests
