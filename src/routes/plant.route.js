@@ -14,13 +14,13 @@ router.get('/', plantController.findAll);
 router.post('/', multer.single('myImage'), plantController.create);
 // multer.single('myImage'),
 
-// Retrieve a single employee with id
+// Retrieve a single plant with id
 router.get('/:id', plantController.findById);
 
-// Update a employee with id
+// Update a plant with id
 router.put('/:id', plantController.update);
 
-// Delete a employee with id
+// Delete a plant with id
 router.delete('/:id', plantController.delete);
 
 

@@ -19,7 +19,14 @@ exports.findAll = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    const newCondition = new Condition(req.body);
+    console.log(req.body.affliction_common_name);
+
+
+    const newCondition = new Condition({
+            affliction_common_name: req.body.affliction_common_name,
+            affliction_latin_name: req.body.affliction_latin_name,
+            affliction_description: req.body.affliction_description
+        });
 
     // console.log(JSON.stringify(newCondition));
 

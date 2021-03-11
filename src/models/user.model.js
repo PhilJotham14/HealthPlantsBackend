@@ -9,6 +9,7 @@ var User = function(user){
     this.email = user.email;
     this.phone_number = user.phone_number;
     this.password = user.password;
+    this.user_image = user.user_image;
 };
 
 User.create = function (newUser, result){

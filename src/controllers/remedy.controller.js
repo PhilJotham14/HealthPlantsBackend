@@ -20,8 +20,22 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.create = function(req, res) {
-    const newRemedy = new Remedy(req.body);
+exports.create = async function(req, res) {
+    console.log(req.body.remedy_name);
+    // async
+    const ImgResponse = await cloudinary.uploader.upload(
+        req.file.path
+        
+    ).catch(error => {
+        console.log(error);
+    });
+    console.log(ImgResponse.url);
+    
+    const newRemedy = new Remedy({
+            remedy_name: req.body.remedy_name,
+            remedy_preparation: req.body.remedy_preparation,
+            remedy_image: ImgResponse.url });
+
 
     // console.log(JSON.stringify(newRemedy);
 
