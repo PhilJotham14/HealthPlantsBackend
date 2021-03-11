@@ -41,7 +41,7 @@ Plant.findAll = function (result) {
             console.log("error: ", err);
             result(null, err);
         } else {
-            console.log('PLANT: ', res);
+            // console.log('PLANT: ', res);
             result(null, res);
         }
     });

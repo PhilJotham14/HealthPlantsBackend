@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const {cloudinary} = require('./config/cloudinary');
 const fileUpload = require("express-fileupload");
-const path = require("path");
+// const path = require("path");
 // create the express app
 const app = express();
 
@@ -18,7 +19,7 @@ const reviewRoute = require('./src/routes/review.route');
 
 
 // Declare the server port
-const port = process.env.PORT || 5000;
+const port = 5001 || process.env.PORT ;
 
 // parse url encoded requests
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -28,7 +29,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 // app.use(express.static(path.join(_dirname, 'public')));
-app.use(fileUpload());
+// app.use(fileUpload());
 
 // Use routes as middleware with the help of express.
 app.use('/api/plants', plantRoute);
