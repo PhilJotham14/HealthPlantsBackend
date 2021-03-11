@@ -5,7 +5,7 @@ var dbConnect = require('./../../config/db.config');
 
 // Create a condition object.
 var Condition = function(condition){
-    this.affliction_common_name = condition.affliction_common_name;    this.email = user.email;
+    this.affliction_common_name = condition.affliction_common_name; 
     this.affliction_latin_name = condition.affliction_latin_name;
     this.affliction_description = condition.affliction_description;
 };

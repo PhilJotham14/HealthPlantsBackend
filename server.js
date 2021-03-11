@@ -14,11 +14,12 @@ const userRoute = require('./src/routes/user.route');
 const conditionRoute = require('./src/routes/condition.route');
 const remedyRoute = require('./src/routes/remedy.route');
 const reviewRoute = require('./src/routes/review.route');
+const commentRoute = require('./src/routes/comment.route');
 
 
 
 // Declare the server port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // parse url encoded requests
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -36,6 +37,7 @@ app.use('/api/users', userRoute);
 app.use('/api/conditions', conditionRoute);
 app.use('/api/remedies', remedyRoute);
 app.use('/api/reviews', reviewRoute);
+app.use('/api/comments', commentRoute);
 
 
 // define a root route
