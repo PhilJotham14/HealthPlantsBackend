@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const {cloudinary} = require('./config/cloudinary');
 const fileUpload = require("express-fileupload");
-const path = require("path");
+// const path = require("path");
 // create the express app
 const app = express();
 
@@ -14,21 +15,22 @@ const userRoute = require('./src/routes/user.route');
 const conditionRoute = require('./src/routes/condition.route');
 const remedyRoute = require('./src/routes/remedy.route');
 const reviewRoute = require('./src/routes/review.route');
+const commentRoute = require('./src/routes/comment.route');
 
 
 
 // Declare the server port
-const port = process.env.PORT || 5000;
+const port = 5001 || process.env.PORT ;
 
 // parse url encoded requests
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // parse requests of content type application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors());
 // app.use(express.static(path.join(_dirname, 'public')));
-app.use(fileUpload());
+// app.use(fileUpload());
 
 // Use routes as middleware with the help of express.
 app.use('/api/plants', plantRoute);
@@ -36,12 +38,14 @@ app.use('/api/users', userRoute);
 app.use('/api/conditions', conditionRoute);
 app.use('/api/remedies', remedyRoute);
 app.use('/api/reviews', reviewRoute);
+app.use('/api/comments', commentRoute);
 
 
 // define a root route
 app.get('/', (req, res) => {
     res.send("Welcome to Health plants of Uganda.");
 });
+// })
 
 
 // listen for requests

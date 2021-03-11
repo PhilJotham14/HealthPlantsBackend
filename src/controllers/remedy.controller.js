@@ -2,6 +2,8 @@
 require('body-parser');
 // import the remedy model from the models folder
 const Remedy = require('../models/remedy.model');
+// import the cloudinary.
+const cloudinary = require('../../config/cloudinary');
 
 
 exports.findAll = function(req, res) {
