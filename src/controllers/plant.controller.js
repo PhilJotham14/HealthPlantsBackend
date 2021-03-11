@@ -3,7 +3,9 @@ require('body-parser');
 // import the Plant model from the models folder
 const Plant = require('../models/plant.model');
 
-const cloudinary = require('../../config/cloudinary'); 
+// import the cloudinary.
+const cloudinary = require('../../config/cloudinary');
+
 
 
 exports.findAll = function(req, res) {

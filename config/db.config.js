@@ -1,6 +1,6 @@
 'use strict';
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // Configurations for the database connection
 const dbConnect = mysql.createPool({

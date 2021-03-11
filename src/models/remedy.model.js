@@ -25,7 +25,7 @@ Remedy.create = function (newRemedy, result){
 };
 
 Remedy.findAll = function (result) {
-    dbConnect.query("SELECT remedy_id, remedy_name, remedy_description, plant_variant_name, COUNT(*) FROM remedy INNER JOIN remedy_plant_variant USING (remedy_id) INNER JOIN plant_variant USING (plant_variant_id) INNER JOIN review USING (remedy_id);", function (err, res) {
+    dbConnect.query("SELECT remedy_id, remedy_name, remedy_preparation, plant_variant_name, COUNT(*) FROM remedy INNER JOIN remedy_plant_variant USING (remedy_id) INNER JOIN plant_variant USING (plant_variant_id) INNER JOIN review USING (remedy_id);", function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);

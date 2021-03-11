@@ -9,6 +9,20 @@ var Plant = function(plant){
     this.plant_latin_name = plant.plant_latin_name;
     this.plant_description = plant.plant_description;
     this.plant_image = plant.plant_image;
+<<<<<<< HEAD
+=======
+    // let file = req.fles.uploaded_image;
+    // this.plant_image = file.name;
+};
+// var file = req.files.uploaded_image;
+// 		var img_name=file.name;
+Plant.create = function (newPlant, result){                   
+    // file.mv('public/images/upload_images/'+file.name, function(err) {
+                   
+    //     if (err)
+ 
+    //     return res.status(500).send(err);
+>>>>>>> 572a88551f9df5e399ac9ae260e57557004077b5
     
 };
 
@@ -47,7 +61,7 @@ Plant.findAll = function (result) {
             console.log("error: ", err);
             result(null, err);
         } else {
-            console.log('PLANT: ', res);
+            // console.log('PLANT: ', res);
             result(null, res);
         }
     });
