@@ -20,7 +20,7 @@ const commentRoute = require('./src/routes/comment.route');
 
 
 // Declare the server port
-const port = 5001 || process.env.PORT ;
+const port = process.env.PORT || 5001;
 
 // parse url encoded requests
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));

@@ -1,4 +1,6 @@
 const express = require('express');
+//We require multer configurations
+const multer = require('../../config/multer');
 
 const router = express.Router();
 
@@ -10,6 +12,6 @@ const newRemedy = require('../models/remedy.model');
 router.get('/', remedyController.findAll);
 
 // Route to create a new remedy entry.
-router.post('/', remedyController.create);
+router.post('/', multer.single('myImage'), remedyController.create);
 
 module.exports = router;

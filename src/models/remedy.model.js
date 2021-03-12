@@ -5,8 +5,9 @@ var dbConnect = require('./../../config/db.config');
 
 // Create a Remedy object.
 var Remedy= function(remedy){
-    this.name = remedy.name;
-    this.preparation = remedy.preparation;
+    this.remedy_name = remedy.remedy_name;
+    this.remedy_preparation = remedy.remedy_preparation;
+    this.remedy_image = remedy.remedy_image
 };
 
 Remedy.create = function (newRemedy, result){
@@ -25,7 +26,8 @@ Remedy.create = function (newRemedy, result){
 };
 
 Remedy.findAll = function (result) {
-    dbConnect.query("SELECT remedy_id, remedy_name, remedy_preparation, plant_variant_name, COUNT(*) FROM remedy INNER JOIN remedy_plant_variant USING (remedy_id) INNER JOIN plant_variant USING (plant_variant_id) INNER JOIN review USING (remedy_id);", function (err, res) {
+    dbConnect.query("SELECT * FROM REMEDY", function (err, res) {
+        // SELECT remedy_id, remedy_name, remedy_preparation, plant_variant_name, COUNT(*) FROM remedy INNER JOIN remedy_plant_variant USING (remedy_id) INNER JOIN plant_variant USING (plant_variant_id) INNER JOIN review USING (remedy_id);
         if (err) {
             console.log("error: ", err);
             result(null, err);

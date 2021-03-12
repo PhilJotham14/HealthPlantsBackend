@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('../../config/multer');
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ const newUser = require('../models/user.model');
 router.get('/', userController.findAll);
 
 // Route to create a new user entry.
-router.post('/', userController.create);
+router.post('/', multer.single('myImage'), userController.create);
 
 module.exports = router;
