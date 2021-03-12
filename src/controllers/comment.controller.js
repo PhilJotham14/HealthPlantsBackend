@@ -14,7 +14,7 @@ exports.findAll = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    const newComment = new Comment(req.body);
+    const newComment = req.body.comment;
     if(req.body.constructor === Object && Object.keys(req.body).length === 0){
         res.status(400).send({
             error:true,

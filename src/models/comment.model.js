@@ -11,7 +11,7 @@ var Comment = (comment) => {
 
 Comment.create =  (newComment, result) =>{
     
-    dbConnect.query("INSERT INTO comment set ?", newComment, (err, res) =>{
+    dbConnect.query("INSERT INTO comment (comment_body) VALUES (?)", [newComment], (err, res) =>{
         // console.log(newCondition);
         if (err) {
             console.log("error: ", err);
@@ -29,6 +29,7 @@ Comment.findAll = (result) =>{
         (err, res) => {
             if(err){
                 result(null, err);
+                console.log("error");
                 console.log(err);
             }else{
                 result(null, res)
