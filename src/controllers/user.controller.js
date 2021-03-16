@@ -1,5 +1,7 @@
 'use strict';
 require('body-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 // import the cloudinary.
 const cloudinary = require('../../config/cloudinary');
 
@@ -32,12 +34,17 @@ exports.create = async function(req, res) {
     ).catch(error => {
         console.log(error);
     });
+
+    const password = req.body.password;
+    console.log(password);
+    const encryptedPassword = await bcrypt.hash(password, saltRounds)
     console.log(ImgResponse.url);
     
     const newUser = new User({
             user_full_name: req.body.user_full_name,
             email: req.body.email,
             phone_number: req.body.phone_number,
+            password: encryptedPassword,
             user_image: ImgResponse.url });
 
 

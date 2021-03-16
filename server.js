@@ -16,6 +16,7 @@ const conditionRoute = require('./src/routes/condition.route');
 const remedyRoute = require('./src/routes/remedy.route');
 const reviewRoute = require('./src/routes/review.route');
 const commentRoute = require('./src/routes/comment.route');
+const loginRoute = require('./src/routes/login.route');
 
 
 
@@ -39,6 +40,7 @@ app.use('/api/conditions', conditionRoute);
 app.use('/api/remedies', remedyRoute);
 app.use('/api/reviews', reviewRoute);
 app.use('/api/comments', commentRoute);
+app.use('/api/login', loginRoute);
 
 
 // define a root route
