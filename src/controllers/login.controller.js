@@ -7,7 +7,7 @@ exports.login = async function(req,res){
     console.log(req.body);
     var email= req.body.email;
     var password = req.body.password;
-    dbConnect.query('SELECT * FROM users WHERE email = ?',[email], async function (error, results, fields) {
+    dbConnect.query('SELECT * FROM user WHERE email = ?',[email], async function (error, results, fields) {
       if (error) {
         res.send({
           "code":400,
