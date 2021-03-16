@@ -3,10 +3,12 @@
 // import dbConnect from the db.config.js file in the configurations folder.
 var dbConnect = require('./../../config/db.config');
 
-//____________ Create a comment object.
+
+
+//_____________ create comment object
 var Comment = (comment) => { 
     this.comment_body = comment.comment_body;
-    this.comment_date = comment.comment_date;    
+    this.comment_date = comment.comment_date;     
 };
 
 Comment.create =  (newComment, result) =>{
@@ -25,17 +27,40 @@ Comment.create =  (newComment, result) =>{
 };
 
 Comment.findAll = (result) =>{
+    
+    // dbConnect.query("SELECT id, comment FROM comments",
     dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
         (err, res) => {
             if(err){
                 result(null, err);
-                console.log("error");
                 console.log(err);
             }else{
                 result(null, res)
             }
         }
     )
+}
+
+Comment.findById = (comment_id, result) =>{
+    dbConnect.query("SELECT * FROM comment WHERE comment_id = ?", comment_id , (err, res) =>{
+        if(err){
+            console.log("error: ", err);
+            result( null , err);
+        }else{
+            result(err, null)
+        }
+    })
+}
+
+Comment.delete = (comment_id, result) =>{
+    dbConnect.delete("DELETE FROM comment WHERE comment_id = ?", [comment_id], (err, res) =>{
+        if(err){
+            console.log("error: ", err);
+            result(null, err)
+        }else{
+            result( null, res)
+        }
+    })
 }
 
 module.exports = Comment;

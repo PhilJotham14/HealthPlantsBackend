@@ -71,7 +71,7 @@ exports.create = async function(req, res) {
  exports.findById = function(req, res) {
     Plant.findById(req.params.id, function(err, plant) {
         if (err)  res.send(err);
-        res.json(employee);
+        res.json(employee); //employee??
     });
 };
 exports.update = function(req, res) {
@@ -91,7 +91,7 @@ exports.update = function(req, res) {
     }
 };
 exports.delete = function(req, res) {
-    Plant.delete( req.params.id, function(err, employee) {
+    Plant.delete( req.params.id, function(err, employee) { //employee??
         if (err)  res.send(err);
         res.json({ error:false,
             message: 'Plant successfully deleted' });

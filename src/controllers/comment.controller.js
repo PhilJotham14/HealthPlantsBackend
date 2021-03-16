@@ -35,4 +35,26 @@ exports.create = (req, res) => {
     }
 }
 
+exports.findById = (req, res) =>{
+    Comment.findById(req.param.id, (err, comment) =>{
+        if(err){
+            res.send(err)
+        }else{
+            res.json(comment)
+        }
+    })
+}
+
+exports.delete = (req, res) =>{
+    Comment.delete(req.params.id, (err, comment) =>{
+        if(err){
+            res.send(err)
+        }else{
+            res.json({
+                error:false,
+                message: 'comment deleted successfully'
+            })
+        }
+    })
+}
 
