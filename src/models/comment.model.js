@@ -31,7 +31,7 @@ Comment.findAll = function(result){
     // dbConnect.query("SELECT id, comment FROM comments",
     // dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
     // dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
-    dbConnect.query("SELECT comment_id, comment_body FROM comment",
+    dbConnect.query("SELECT * FROM comment",
         (err, res) => {
             if(err){
                 result(null, err);
