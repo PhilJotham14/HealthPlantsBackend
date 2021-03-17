@@ -3,7 +3,7 @@ require('body-parser');
 //__________ import the Comments model from the models folder
 const Comment = require('../models/comment.model');
 
-exports.findAll = (req, res) => {
+exports.findAll = function(req, res){
     Comment.findAll((err, comment) =>{
         if(err){
             res.send(err);
@@ -13,8 +13,8 @@ exports.findAll = (req, res) => {
     })
 }
 
-exports.create = (req, res) => {
-    const newComment = req.body.comment;
+exports.create = function(req, res){
+    const newComment = new Comment(req.body)
     if(req.body.constructor === Object && Object.keys(req.body).length === 0){
         res.status(400).send({
             error:true,
@@ -35,7 +35,7 @@ exports.create = (req, res) => {
     }
 }
 
-exports.findById = (req, res) =>{
+exports.findById = function(req, res){
     Comment.findById(req.param.id, (err, comment) =>{
         if(err){
             res.send(err)
@@ -45,7 +45,7 @@ exports.findById = (req, res) =>{
     })
 }
 
-exports.delete = (req, res) =>{
+exports.delete = function(req, res){
     Comment.delete(req.params.id, (err, comment) =>{
         if(err){
             res.send(err)
