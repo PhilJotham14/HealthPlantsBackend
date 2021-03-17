@@ -8,7 +8,7 @@ var dbConnect = require('./../../config/db.config');
 //_____________ create comment object
 var Comment = function(comment){ 
     this.comment_body = comment.comment_body;
-    this.comment_date = comment.comment_date;     
+    // this.comment_date = comment.comment_date;     
 };
 
 Comment.create =  function(newComment, result){
@@ -29,7 +29,9 @@ Comment.create =  function(newComment, result){
 Comment.findAll = function(result){
     
     // dbConnect.query("SELECT id, comment FROM comments",
-    dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
+    // dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
+    // dbConnect.query("SELECT comment_id, comment_body, comment_date, COUNT(*) FROM comment INNER JOIN remedy USING (remedy_id) INNER JOIN user USING (user_id)",
+    dbConnect.query("SELECT comment_id, comment_body FROM comment",
         (err, res) => {
             if(err){
                 result(null, err);
