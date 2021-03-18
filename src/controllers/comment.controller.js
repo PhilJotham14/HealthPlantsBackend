@@ -28,6 +28,7 @@ exports.create = function(req, res){
                 res.json({
                     error: false,
                     message: "comment added",
+                    message: comment,
                     data: comment
                 })
             }

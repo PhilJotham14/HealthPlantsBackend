@@ -13,7 +13,8 @@ var Comment = function(comment){
 
 Comment.create =  function(newComment, result){
     
-    dbConnect.query("INSERT INTO comment (comment_body) VALUES (?)", [newComment], (err, res) =>{
+    // dbConnect.query("INSERT INTO comment (comment_body) VALUES (?)", [newComment], (err, res) =>{
+    dbConnect.query("INSERT INTO comment set ?", newComment, (err, res) =>{
         // console.log(newCondition);
         if (err) {
             console.log("error: ", err);
