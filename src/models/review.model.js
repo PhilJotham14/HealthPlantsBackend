@@ -5,8 +5,9 @@ var dbConnect = require('./../../config/db.config');
 
 // Create a Remedy object.
 var Review= function(review){
-    this.description = review.description;
-    this.date = review.date;
+    // this.description = review.description;
+    // this.review_body = review.review_body;
+    // this.date = review.review_date;
     this.user_id = review.user_id;
     this.remedy_id = review.remedy_id;
     this.plant_variant_id = review.plant_variant_id;
@@ -35,7 +36,7 @@ Review.findAll = function (result) {
             console.log("error: ", err);
             result(null, err);
         } else {
-            console.log('REMEDYS: ', res);
+            console.log('Reviews: ', res);
             result(null, res);
         }
     });
