@@ -5,9 +5,8 @@ var dbConnect = require('./../../config/db.config');
 
 // Create a Remedy object.
 var Review= function(review){
-    // this.description = review.description;
-    // this.review_body = review.review_body;
-    // this.date = review.review_date;
+    this.review_date = review.review_date;
+    this.review_description = review.review_description;
     this.user_id = review.user_id;
     this.remedy_id = review.remedy_id;
     this.plant_variant_id = review.plant_variant_id;
@@ -16,7 +15,7 @@ var Review= function(review){
 
 Review.create = function (newReview, result){
     
-    dbConnect.query("INSERT INTO REVIEW set ?", newReview, function(err, res){
+    dbConnect.query("INSERT INTO review set ?", [newReview], (err, res) =>{
         // console.log(newReview);
         if (err) {
             console.log("error: ", err);
@@ -30,7 +29,9 @@ Review.create = function (newReview, result){
 };
 
 Review.findAll = function (result) {
-    dbConnect.query("SELECT review_id, review_date, user_full_name, remedy_name FROM review INNER JOIN (user) USING (user_id) INNER JOIN (remedy) using (remedy_id);",
+    // dbConnect.query("SELECT review_id, review_date, review_description, user_full_name, remedy_name FROM review INNER JOIN (user) USING (user_id) INNER JOIN (remedy) using (remedy_id);",
+    // dbConnect.query("SELECT review_id, review_date, review_description, user_full_name, remedy_name FROM review INNER JOIN (user) USING (user_id) INNER JOIN (remedy) using (remedy_id);",
+    dbConnect.query("SELECT * FROM review",
     function (err, res) {
         if (err) {
             console.log("error: ", err);

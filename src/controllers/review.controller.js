@@ -24,12 +24,18 @@ exports.create = function(req, res) {
     // console.log(JSON.stringify(newReview);
 
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
-        res.status(400).send({ error: true, message: "Please provide all required fields" });
+        res.status(400).send({
+             error: true,
+             message: "Please provide all required fields" 
+            });
     } else {
         Review.create(newReview, function(err, review) {
             if (err)
             res.send(err);
-            res.json({ error: false, message: "Review added successfully.", data: review});
+            res.json({ 
+                error: false, 
+                message: "Review added successfully.", 
+                data: review});
         });
     }
 };
