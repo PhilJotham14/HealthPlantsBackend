@@ -56,7 +56,7 @@ Plant.findAll = function (result) {
 
 Plant.update = function(plant_id, plant, result){
     dbConnect.query("UPDATE plant SET plant_common_name=?,plant_latin_name=?,plant_description=?,plant_image=? WHERE id = ?",
-    [pant.plant_common_name,plant.plant_latin_name,plant.plant_description,plant.plant_image],
+    [plant.plant_common_name,plant.plant_latin_name,plant.plant_description,plant.plant_image],
     function (err, res) {
         if(err) {
             console.log("error: ", err);
