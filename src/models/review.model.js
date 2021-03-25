@@ -43,4 +43,17 @@ Review.findAll = function (result) {
     });
 };
 
+Review.delete = function(review_id, result){
+    dbConnect.query("DELETE FROM review WHERE review_id = ?", [review_id],
+    function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }else{
+            result(null, res);
+        }
+    });
+};
+
+
 module.exports = Review;

@@ -12,4 +12,7 @@ router.get('/', reviewController.findAll);
 // Route to create a new review entry.
 router.post('/', reviewController.create);
 
+// Delete a review with id
+router.delete('/:id', reviewController.delete);
+
 module.exports = router;

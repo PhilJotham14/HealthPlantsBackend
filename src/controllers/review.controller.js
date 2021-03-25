@@ -39,3 +39,12 @@ exports.create = function(req, res) {
         });
     }
 };
+
+exports.delete = function(req, res) {
+    Review.delete( req.params.id, function(err, employee) { //employee??
+        if (err)  res.send(err);
+        res.json({ error:false,
+            message: 'review successfully deleted' });
+        });
+};
+
