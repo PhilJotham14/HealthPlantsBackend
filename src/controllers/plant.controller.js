@@ -74,6 +74,7 @@ exports.create = async function(req, res) {
         res.json(employee); //employee??
     });
 };
+
 exports.update = function(req, res) {
     if(req.body.constructor === Object && Object.keys(req.body).length === 0){
         res.status(400).send({
