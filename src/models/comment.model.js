@@ -56,7 +56,7 @@ Comment.findById = function(comment_id, result){
 }
 
 Comment.delete = function(comment_id, result){
-    dbConnect.delete("DELETE FROM comment WHERE comment_id = ?", [comment_id], (err, res) =>{
+    dbConnect.query("DELETE FROM comment WHERE comment_id = ?", [comment_id], (err, res) =>{
         if(err){
             console.log("error: ", err);
             result(null, err)
